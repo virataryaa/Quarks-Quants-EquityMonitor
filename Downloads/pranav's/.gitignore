@@ -1,0 +1,16 @@
+*.pyc
+__pycache__/
+.streamlit/
+*.egg-info/
+.env
+.venv
+env/
+venv/
+.DS_Store
+*.parquet
+*.csv
+*.xlsx
+*.xls
+Database/
+.pytest_cache/
+*.log
