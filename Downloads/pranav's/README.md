@@ -35,6 +35,23 @@ cd Quarks-Quants-EquityMonitor
 pip install streamlit plotly pandas numpy scipy yfinance
 ```
 
+## Deployment
+
+### Streamlit Cloud
+
+1. Go to [share.streamlit.io](https://share.streamlit.io/)
+2. Sign in with GitHub
+3. Click "New app" and select:
+   - Repository: `virataryaa/Quarks-Quants-EquityMonitor`
+   - Branch: `main`
+   - Main file path: `Downloads/pranav's/Dashboard/app.py`
+4. Click Deploy
+
+The app will automatically:
+- Install dependencies from `requirements.txt`
+- Load the parquet file from GitHub (if not available locally)
+- Run on Streamlit Cloud infrastructure
+
 ## Usage
 
 ### Data Ingestion
