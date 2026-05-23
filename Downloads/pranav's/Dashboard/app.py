@@ -7,6 +7,7 @@ from datetime import datetime
 import yfinance as yf
 from scipy import stats
 import warnings
+from pathlib import Path
 warnings.filterwarnings('ignore')
 
 st.set_page_config(page_title="NIFTY 50 Dashboard", layout="wide", initial_sidebar_state="expanded")
@@ -16,8 +17,18 @@ st.set_page_config(page_title="NIFTY 50 Dashboard", layout="wide", initial_sideb
 # ============================================================================
 @st.cache_data
 def load_data():
-    parquet_path = r"C:\Users\virat.arya\Downloads\pranav's\Database\nifty50_ohlc.parquet"
-    df = pd.read_parquet(parquet_path)
+    local_path = Path(__file__).parent.parent / "Database" / "nifty50_ohlc.parquet"
+
+    if local_path.exists():
+        df = pd.read_parquet(local_path)
+    else:
+        try:
+            github_url = "https://github.com/virataryaa/Quarks-Quants-EquityMonitor/raw/main/Downloads/pranav's/Database/nifty50_ohlc.parquet"
+            df = pd.read_parquet(github_url)
+        except Exception as e:
+            st.error(f"Could not load data: {e}")
+            return None
+
     df['Date'] = pd.to_datetime(df['Date'])
     return df
 
