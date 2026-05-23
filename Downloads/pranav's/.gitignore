@@ -11,6 +11,5 @@ venv/
 *.csv
 *.xlsx
 *.xls
-Database/
 .pytest_cache/
 *.log
